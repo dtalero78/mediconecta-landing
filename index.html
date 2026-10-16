@@ -296,10 +296,11 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 22px;
             list-style: none;
         }
         .nav-links a {
+            white-space: nowrap;
             color: var(--gray-600);
             text-decoration: none;
             font-size: 14px;
@@ -318,6 +319,20 @@
             transition: opacity 0.2s, transform 0.2s !important;
         }
         .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* Acceso a la plataforma (app.mediconecta.co): contorno, para no competir con "Solicitar Demo". */
+        .nav-registro {
+            border: 2px solid var(--brand-teal);
+            color: var(--brand-teal) !important;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-weight: 600 !important;
+            font-size: 14px;
+            transition: background 0.2s, color 0.2s !important;
+        }
+        .nav-registro:hover { background: var(--brand-teal); color: white !important; }
+        /* Laptops pequeñas: sin estas dos, los botones caben en una línea. Siguen en el pie. */
+        @media (max-width: 1200px) { .nav-links .nav-secundario { display: none; } }
 
         .nav-mobile-toggle {
             display: none;
@@ -351,7 +366,8 @@
         }
         .nav-mobile-menu a:last-child { border-bottom: none; }
 
-        @media (max-width: 768px) {
+        /* Con los accesos a la plataforma la barra ya no cabe en tablets: menú móvil desde 1024 (antes 768). */
+        @media (max-width: 1024px) {
             .nav-links { display: none; }
             .nav-mobile-toggle { display: block; }
         }
@@ -1397,9 +1413,11 @@
                 <ul class="nav-links">
                     <li><a href="#funcionalidades">Funcionalidades</a></li>
                     <li><a href="#especialidades">Especialidades</a></li>
-                    <li><a href="#comparativa">Comparativa</a></li>
+                    <li class="nav-secundario"><a href="#comparativa">Comparativa</a></li>
                     <li><a href="#precios">Precios</a></li>
-                    <li><a href="#faq">Preguntas</a></li>
+                    <li class="nav-secundario"><a href="#faq">Preguntas</a></li>
+                    <li><a href="https://app.mediconecta.co/login">Ingresar</a></li>
+                    <li><a href="https://app.mediconecta.co/registro" class="nav-registro">Crear mi consultorio</a></li>
                     <li><a href="#contacto" class="nav-cta">Solicitar Demo</a></li>
                 </ul>
                 <button class="nav-mobile-toggle" onclick="toggleMobile()" aria-label="Abrir menú">
@@ -1412,6 +1430,8 @@
                 <a href="#comparativa" onclick="closeMobile()">Comparativa</a>
                 <a href="#precios" onclick="closeMobile()">Precios</a>
                 <a href="#faq" onclick="closeMobile()">Preguntas frecuentes</a>
+                <a href="https://app.mediconecta.co/registro">Crear mi consultorio</a>
+                <a href="https://app.mediconecta.co/login">Ingresar</a>
                 <a href="#contacto" onclick="closeMobile()">Solicitar Demo</a>
             </div>
         </div>
